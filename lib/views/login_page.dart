@@ -118,7 +118,9 @@ class _LoginViewState extends State<LoginView> {
                             )),
                         const SizedBox(height: 16.0),
                         Obx(() => loginController.isLoading.value
-                            ? const CircularProgressIndicator()
+                            ? const CircularProgressIndicator(
+                          color: Colors.cyan,
+                        )
                             : ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.cyan.shade50),

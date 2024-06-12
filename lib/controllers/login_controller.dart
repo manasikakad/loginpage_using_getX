@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:loginpage/views/bottom_bar.dart';
+import 'package:loginpage/views/home_page.dart';
 import '../models/login_model.dart';
 
 class LoginController extends GetxController {
@@ -8,8 +10,8 @@ class LoginController extends GetxController {
   var isLoading = false.obs;
   Rx<TextEditingController> usernameController = TextEditingController().obs;
   Rx<TextEditingController> passwordController = TextEditingController().obs;
-  late FocusNode  usernameFocusNode;
-  late FocusNode  passwordFocusNode;
+  late FocusNode usernameFocusNode;
+  late FocusNode passwordFocusNode;
   List<User> loginData = [
     User(username: "admin1", password: "admin1"),
     User(username: "admin2", password: "admin2"),
@@ -19,6 +21,7 @@ class LoginController extends GetxController {
     print(usernameController.value.text);
     isLoading(true);
     bool isValid = false;
+    await Future.delayed(Duration(seconds: 3));
     for (var userData in loginData) {
       print(usernameController.value.text);
 
@@ -33,17 +36,19 @@ class LoginController extends GetxController {
       Get.snackbar(
           "Login Success", "Welcome, ${usernameController.value.text}!",
           backgroundColor: Colors.cyan.shade200, colorText: Colors.black);
+      await Get.to(BottomNavBar());
     } else {
       Get.snackbar("Login Failed", "Invalid username or password",
           backgroundColor: Colors.red.shade300, colorText: Colors.white);
     }
   }
-onrefresh(){
-  usernameController.value.text = '';
-  passwordController.value.text = '';
-  FocusScope.of(Get.context!).requestFocus(FocusNode());
 
-}
+  onrefresh() {
+    usernameController.value.text = '';
+    passwordController.value.text = '';
+    FocusScope.of(Get.context!).requestFocus(FocusNode());
+  }
+
   // void setUsername(String username) {
   //   user.update((user) {
   //     user?.username = username;
@@ -61,7 +66,6 @@ onrefresh(){
     super.onInit();
     passwordFocusNode = FocusNode();
     usernameFocusNode = FocusNode();
-
   }
 
   @override
