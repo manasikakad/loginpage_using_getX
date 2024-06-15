@@ -18,6 +18,7 @@ class LoginController extends GetxController {
   ];
 
   void login() async {
+
     print(usernameController.value.text);
     isLoading(true);
     bool isValid = false;
