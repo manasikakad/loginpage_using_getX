@@ -23,22 +23,18 @@ class ProfilePageController extends GetxController {
     try {
       print("Reading file...");
 
-      // Read the CSV file from assets
       final csvString = await rootBundle.loadString('assets/CityMaster.csv');
 
-      // Remove BOM if present
       final cleanCsvString = removeBom(csvString);
 
-      // Print the first few characters for debugging
       print("CSV content: ${cleanCsvString.substring(0, 100)}");
 
-      // Convert CSV string to List
       final csvList = CsvToListConverter().convert(cleanCsvString, eol: "\n");
       print("File read successfully!");
 
       csvDataList.clear();
       for (var row in csvList) {
-        print("Processing row: $row"); // Debug print
+        print("Processing row: $row");
         if (row is List<dynamic> && row.length >= 3) {
           try {
             csvDataList.add(CsvData.fromCsv(row));
@@ -54,7 +50,6 @@ class ProfilePageController extends GetxController {
 
 
     } catch (e) {
-      // Handle error
       print("Error reading file: $e");
     } finally {
       isLoading(false);

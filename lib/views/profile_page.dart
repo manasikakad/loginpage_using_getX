@@ -21,7 +21,7 @@ class _HomePageState extends State<ProfilePage> {
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: Colors.cyan.shade50,
-        leading: Icon(Icons.arrow_back_ios_new),
+        leading: const Icon(Icons.arrow_back_ios_new),
         title: const Text(
           "Profile Page",
           style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Roboto'),
@@ -34,17 +34,17 @@ class _HomePageState extends State<ProfilePage> {
           children: [
             Obx(() {
               if (profilePageController.isLoading.value) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               }
 
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     "State",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Container(
@@ -55,7 +55,7 @@ class _HomePageState extends State<ProfilePage> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: DropdownButton<String>(
-                        hint: Text("Select State"),
+                        hint: const Text("Select State"),
                         value: profilePageController.selectedState.value.isEmpty
                             ? null
                             : profilePageController.selectedState.value,
@@ -75,12 +75,12 @@ class _HomePageState extends State<ProfilePage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 16),
-                  Text(
+                  const SizedBox(height: 16),
+                  const Text(
                     "City",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Container(
@@ -91,7 +91,7 @@ class _HomePageState extends State<ProfilePage> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: DropdownButton<String>(
-                        hint: Text("Select City"),
+                        hint: const Text("Select City"),
                         value: profilePageController.selectedCity.value.isEmpty
                             ? null
                             : profilePageController.selectedCity.value,
@@ -112,12 +112,12 @@ class _HomePageState extends State<ProfilePage> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 16),
-                  Text(
+                  const SizedBox(height: 16),
+                  const Text(
                     "Pincode",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Container(
@@ -128,7 +128,7 @@ class _HomePageState extends State<ProfilePage> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: DropdownButton<int>(
-                        hint: Text("Select Pincode"),
+                        hint: const Text("Select Pincode"),
                         value: profilePageController.selectedPincode.value == 0
                             ? null
                             : profilePageController.selectedPincode.value,
